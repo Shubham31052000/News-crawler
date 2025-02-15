@@ -1,13 +1,49 @@
 import os
 import requests
 from bs4 import BeautifulSoup
+import re
+from datetime import datetime
 import subprocess
 
 # Crawl website and generate HTML
 def crawl_and_generate_html():
-    base_url = "https://www.visive.ai/news"
+    base_url = "https://www.visive.ai"
+    news_url = f"{base_url}/news"
     visited_urls = set()
     data = []
+    failed_urls = []
+
+    # Regex for valid URLs
+    valid_url_pattern = re.compile(r"^https://www\.visive\.ai/news/[a-zA-Z0-9\-]+$")
+
+    def extract_published_date(html):
+        # Check for schema.org date published
+        date_match = re.search(r'<meta\s+itemprop="datePublished"\s+content="([^"]*)"', html)
+        if date_match:
+            return date_match.group(1)
+        
+        # Check for <time> tag with pubdate attribute
+        time_match = re.search(r'<time[^>]*pubdate[^>]*datetime="([^"]*)"[^>]*>', html)
+        if time_match:
+            return time_match.group(1)
+        
+        # Look for common date patterns
+        date_patterns = [
+            r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})",  # YYYY-MM-DD or YYYY/MM/DD
+            r"(\d{1,2})[-/](\d{1,2})[-/](\d{2,4})",  # DD/MM/YYYY
+            r"(\w{3,9})\s+(\d{1,2}),\s+(\d{4})",  # Month DD, YYYY
+        ]
+        for pattern in date_patterns:
+            match = re.search(pattern, html)
+            if match:
+                if pattern == date_patterns[0]:
+                    return f"{match.group(1)}-{int(match.group(2)):02}-{int(match.group(3)):02}"
+                elif pattern == date_patterns[1]:
+                    return f"{int(match.group(3)):04}-{int(match.group(2)):02}-{int(match.group(1)):02}"
+                elif pattern == date_patterns[2]:
+                    month = datetime.strptime(match.group(1), "%B").month
+                    return f"{match.group(3)}-{month:02}-{int(match.group(2)):02}"
+        return ""
 
     def crawl(url):
         if url in visited_urls:
@@ -16,37 +52,58 @@ def crawl_and_generate_html():
 
         try:
             response = requests.get(url)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, 'html.parser')
+            if response.status_code != 200:
+                print(f"Skipping {url}: {response.status_code} - {response.reason}")
+                failed_urls.append(url)
+                return
+            
+            html = response.text
+            soup = BeautifulSoup(html, 'html.parser')
 
-            # Extract title, URL, and published date
-            title = soup.title.string if soup.title else "No Title"
-            published_date = soup.find('meta', {'itemprop': 'datePublished'})
-            date = published_date['content'] if published_date else "Unknown Date"
+            # Skip homepage and main news page
+            if url != base_url and url != news_url:
+                title = soup.title.string if soup.title else "No Title"
+                published_date = extract_published_date(html)
 
-            data.append({'title': title, 'url': url, 'date': date})
+                if valid_url_pattern.match(url) and published_date:
+                    try:
+                        parsed_date = datetime.strptime(published_date, "%Y-%m-%d")
+                        data.append({'title': title, 'url': url, 'date': parsed_date})
+                    except ValueError:
+                        print(f"Invalid date format for {url}: {published_date}")
 
-            # Find and crawl links on the page
+            # Extract and crawl links
             for link in soup.find_all('a', href=True):
                 href = link['href']
                 if href.startswith('/'):
-                    href = base_url + href
-                if base_url in href and href not in visited_urls:
+                    href = f"{base_url}{href}"
+                if valid_url_pattern.match(href) and href not in visited_urls:
                     crawl(href)
-        except Exception as e:
+        except requests.exceptions.RequestException as e:
             print(f"Failed to crawl {url}: {e}")
+            failed_urls.append(url)
 
-    crawl(base_url)
+    crawl(news_url)
+
+    # Sort data by date (latest first) and take the top 10
+    sorted_data = sorted(data, key=lambda x: x['date'], reverse=True)[:10]
 
     # Generate HTML
     with open("index.html", "w") as file:
         file.write("<html><head><title>News</title></head><body>")
         file.write("<h1>Latest News</h1>")
         file.write("<ul>")
-        for item in data:
-            file.write(f"<li><a href='{item['url']}'>{item['title']}</a> - {item['date']}</li>")
+        for item in sorted_data:
+            formatted_date = item['date'].strftime("%Y-%m-%d")
+            file.write(f"<li><a href='{item['url']}'>{item['title']}</a> - {formatted_date}</li>")
         file.write("</ul>")
         file.write("</body></html>")
+
+    # Save failed URLs to a log file
+    if failed_urls:
+        with open("failed_urls.log", "w") as log_file:
+            log_file.write("\n".join(failed_urls))
+        print(f"Failed URLs logged in 'failed_urls.log'.")
 
     print("HTML file updated.")
 
@@ -64,7 +121,7 @@ def push_to_github():
     except subprocess.CalledProcessError as e:
         print(f"Failed to push changes: {e}")
 
-# Run the script directly
+# Run the script
 if __name__ == "__main__":
     crawl_and_generate_html()
     push_to_github()
