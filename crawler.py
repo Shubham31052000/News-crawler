@@ -1,8 +1,6 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-import schedule
-import time
 import subprocess
 
 # Crawl website and generate HTML
@@ -66,15 +64,7 @@ def push_to_github():
     except subprocess.CalledProcessError as e:
         print(f"Failed to push changes: {e}")
 
-# Full automation workflow
-def run_crawler():
+# Run the script directly
+if __name__ == "__main__":
     crawl_and_generate_html()
     push_to_github()
-
-# Schedule the script to run every 6 hours
-schedule.every(6).hours.do(run_crawler)
-
-print("Scheduler is running. Press Ctrl+C to stop.")
-while True:
-    schedule.run_pending()
-    time.sleep(1)
