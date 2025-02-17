@@ -3,24 +3,71 @@
                     <head>
                         <title>News</title>
                         <style>
+                                            body {
+                            font-family: Arial, sans-serif;
+                            margin: 0; /* Reset default body margin */
+                            padding: 20px; /* Add some padding around content */
+                        }
+
+                        a {
+                            font-size: 18px; /* Adjusted base font size */
+                            color: black;
+                            font-weight: normal;
+                            text-decoration: underline;
+                            display: block;
+                            margin-bottom: 10px;
+                        }
+
+                        .date {
+                            font-size: 14px; /* Adjusted base font size */
+                            color: rgb(59, 59, 59);
+                            display: block;
+                            margin-bottom: 20px;
+                        }
+
+                        /* Media Queries for Responsiveness */
+                        @media (min-width: 768px) { /* Tablets and larger */
                             body {
-                                font-family: Arial, sans-serif;
+                                padding: 30px;
                             }
+
                             a {
-                                font-size: 26px;
-                                color: black;
-                                font-weight: normal;
-                                text-decoration: underline;
-                                display: block;
+                                font-size: 22px;
+                                margin-bottom: 15px;
+                            }
+
+                            .date {
+                                font-size: 15px;
+                                margin-bottom: 25px;
+                            }
+                        }
+
+                        @media (min-width: 992px) { /* Desktops and larger */
+                            a {
+                                font-size: 24px;
                                 margin-bottom: 10px;
                             }
+
                             .date {
                                 font-size: 16px;
-                                color: rgb(59, 59, 59);
-                                display: block;
                                 margin-bottom: 20px;
                             }
-                        </style>
-                    </head>
-                    <body>
-                    <a target='_blank' href='https://www.visive.ai/news/amd-vs-nvidia-which-ai-chip-stock-is-superior'>AMD vs Nvidia: Which AI Chip Stock is Superior?</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/ais-vital-role-in-cardiac-disease-diagnosis-and-treatment-at-aster-ramesh'>AI's Vital Role in Cardiac Disease Diagnosis and Treatment at Aster Ramesh </a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/letters-to-the-editor-gemini-and-ai-capabilities-debate'>Letters to the Editor: Gemini and AI Capabilities Debate</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/ai-and-the-future-of-education'>AI and the Future of Education</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/new-laws-to-tackle-ai-generated-child-abuse-images'>New Laws to Tackle AI-Generated Child Abuse Images</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/chinese-ai-firms-rising-competitors-to-deepseek-and-more'>Chinese AI Firms Rising: Competitors to DeepSeek and More</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/23-of-indian-firms-adopt-ai-73-eye-big-2025-expansion'>23% of Indian Firms Adopt AI, 73% Eye Big 2025 Expansion</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/ai-driven-traps-new-zealands-leap-in-wildlife-conservation'>AI-Driven Traps: New Zealand's Leap in Wildlife Conservation</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/nvidias-deepseek-and-alibabas-ai-tech-industry-evolving'>Nvidia's DeepSeek and Alibaba's AI: Tech Industry Evolving</a><span class='date'>Published date: 2025-02-03</span><a target='_blank' href='https://www.visive.ai/news/openai-shifts-to-new-open-source-strategy-abandons-closed-source-model'>OpenAI Shifts to New Open-Source Strategy, Abandons Closed-Source Model</a><span class='date'>Published date: 2025-02-03</span></body></html>
+                        }
+
+                        @media (max-width: 480px) { /* Small Phones */
+                            body {
+                                padding: 10px;
+                            }
+                            a {
+                                font-size: 16px;
+                                margin-bottom: 8px;
+                            }
+                            .date {
+                                font-size: 12px;
+                                margin-bottom: 15px;
+                            }
+                        }
+                                        </style>
+                                    </head>
+                                    <body>
+                    </body></html>
