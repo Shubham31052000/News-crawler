@@ -1,0 +1,91 @@
+name: AI News Cross-Repo Pipeline
+
+on:
+  schedule:
+    # Runs at minute 0 of every 3rd hour
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout Repo A (your script repo).
+      # This brings the script AND its local data/ folder.
+      - name: Checkout Script Repo (Repo A)
+        uses: actions/checkout@v4
+        with:
+          # This is needed so that Repo A can commit its own data/ files back if they change
+          token: ${{ secrets.REPO_B_PAT }} 
+
+      # Step 2: Checkout Repo B (the private content repo) into a sub-folder.
+      # This folder will be the destination for the HTML output.
+      - name: Checkout Content Repo (Repo B)
+        uses: actions/checkout@v4
+        with:
+          # --- IMPORTANT: REPLACE THIS with the "owner/repo" of the private repo ---
+          repository: TheOtherUser/the-private-repo
+          # Use the Personal Access Token that has access to Repo B
+          token: ${{ secrets.REPO_B_PAT }}
+          # This puts the content of Repo B into a folder named 'output-repo'
+          path: 'output-repo'
+
+      # Step 3: Setup Python and install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Step 4: Create the Google Service Account file
+      - name: Create Google Service Account File
+        run: echo "${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}" > gcloud-service-key.json
+
+      # Step 5: Run your Python script
+      - name: Run the AI News Pipeline
+        run: python local_ai_news_pipeline.py
+        env:
+          DEEPINFRA_API_KEY: ${{ secrets.DEEPINFRA_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.REPO_B_PAT }} # Use the powerful PAT for all GitHub operations
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+          SERVICE_ACCOUNT_FILE_PATH: 'gcloud-service-key.json'
+          # CRITICAL: Tell the script to write all output to the 'output-repo' folder
+          OUTPUT_HTML_DIR: './output-repo'
+      
+      # Step 6: Commit and Push any new HTML files back to Repo B
+      - name: Commit and Push HTML to Repo B
+        run: |
+          cd output-repo
+          git config --global user.name "Visive AI Bot"
+          git config --global user.email "bot@example.com"
+          # Check if there are any changes (new/modified HTML files)
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit in Repo B."
+          else
+            echo "Changes found in Repo B. Committing..."
+            git add .
+            git commit -m "Automated AI News Update - New Articles"
+            git push
+            echo "Changes pushed to Repo B successfully."
+          fi
+          cd .. # Go back to the root directory
+
+      # Step 7: Commit and Push any database/state changes back to Repo A
+      - name: Commit and Push Data to Repo A
+        run: |
+          git config --global user.name "Visive AI Bot"
+          git config --global user.email "bot@example.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit in Repo A."
+          else
+            echo "Database changes found in Repo A. Committing..."
+            # Explicitly add only the data directory to avoid committing other temp files
+            git add data/
+            git commit -m "Automated: Update article database"
+            git push
+            echo "Database changes pushed to Repo A successfully."
+          fi

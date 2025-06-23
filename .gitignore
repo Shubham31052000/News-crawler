@@ -1,0 +1,20 @@
+# --- Environment variables and secrets ---
+# Never commit the .env file
+.env
+
+# Never commit Google Cloud service account keys
+*.json
+
+# --- Local Data and State ---
+# The database and state files should not be in the repo if they contain sensitive info
+# or are frequently updated by the script. Let the GitHub Action manage them.
+data/
+
+# --- Python specific ---
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# --- IDE specific ---
+# Ignore VS Code settings
+.vscode/

@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visive AI News - The Forefront of AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root{--primary:#3B82F6;--muted:#F9FAFB;--muted-foreground:#6B7280;--background:#FFFFFF;--foreground:#111827;--border:#E5E7EB;}
+      body{font-family: 'Inter', sans-serif;}
+      @keyframes slide-up-fade {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-hero { animation: slide-up-fade 0.7s ease-out forwards; }
+    </style>
+    </head><body>
+    <header class="fixed w-full top-0 z-50 bg-background/80 backdrop-filter backdrop-blur-lg border-b border-border">
+      <div class="flex h-16 items-center px-4 md:px-8 lg:px-12 max-w-screen-xl mx-auto">
+         <a href="https://news.visive.ai/" class="text-2xl font-bold text-primary mr-auto">VISIVE.AI</a>
+        <nav class="hidden md:flex items-center space-x-6 text-base">
+          <a href="https://news.visive.ai/" class="text-foreground font-medium transition-colors hover:text-primary">Home</a>
+          <a href="https://news.visive.ai/news.html" class="text-foreground font-medium transition-colors hover:text-primary">News</a>
+          <a href="https://www.visive.ai/solutions" class="text-foreground font-medium transition-colors hover:text-primary">Solutions</a>
+          <a href="https://www.visive.ai/how-we-help/introductions" class="block py-2 text-base font-medium transition-colors hover:text-primary">How we Help</a>
+          <a href="https://www.visive.ai/demos" class="block py-2 text-base font-medium transition-colors hover:text-primary">Demos</a>
+          <a href="https://www.visive.ai/pricing" class="text-foreground font-medium transition-colors hover:text-primary">Pricing</a>
+          <a href="https://www.visive.ai/contact-us" class="text-foreground font-medium transition-colors hover:text-primary">Contact Us</a>
+        </nav>
+        <button class="md:hidden ml-auto" id="mobile-menu-toggle" aria-label="Open menu">
+          <svg class="h-8 w-8 text-foreground" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-background/80 backdrop-filter backdrop-blur-lg">
+        <a href="https://news.visive.ai/" class="block py-2 text-base font-medium transition-colors hover:text-primary">Home</a>.
+        <a href="https://news.visive.ai/news.html" class="text-foreground font-medium transition-colors hover:text-primary">News</a>
+        <a href="https://www.visive.ai/solutions" class="block py-2 text-base font-medium transition-colors hover:text-primary">Solutions</a>
+        <a href="https://www.visive.ai/how-we-help/introductions" class="block py-2 text-base font-medium transition-colors hover:text-primary">How we Help</a>
+        <a href="https://www.visive.ai/demos" class="block py-2 text-base font-medium transition-colors hover:text-primary">Demos</a>
+        <a href="https://www.visive.ai/pricing" class="block py-2 text-base font-medium transition-colors hover:text-primary">Pricing</a>
+        <a href="https://www.visive.ai/contact-us" class="block py-2 text-base font-medium transition-colors hover:text-primary">Contact Us</a>
+      </div>
+      <script>
+        const btn = document.getElementById('mobile-menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+          btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+        }
+      </script>
+    </header>
+    
+    <main class="w-full pt-16">
+        <div class="px-4 md:px-8 lg:px-12 w-full mx-auto max-w-screen-xl py-8 md:py-12">
+        <section class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter text-foreground animate-hero" style="animation-delay: 0.1s;">The Forefront of AI</h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground animate-hero" style="animation-delay: 0.2s;">Your daily source for curated news and breakthroughs from the world of AI.</p>
+        </section><section class="mb-12"><h2 class="text-3xl font-bold tracking-tight text-foreground mb-6">Top Story</h2>
+        <a href="llms-revolutionize-robotics-a-cost-effective-language-interface.html" class="block group"><div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div class="overflow-hidden rounded-xl"><img src="https://lh3.googleusercontent.com/d/1s7rCSBoaeJMy-R39xmVmZLMlYku35K7U=w1200" alt="LLMs Revolutionize Robotics: A Cost-Effective Language Interface" class="w-full h-auto aspect-video object-cover transition-transform duration-300 group-hover:scale-105"></div>
+        <div><h3 class="text-3xl lg:text-4xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">LLMs Revolutionize Robotics: A Cost-Effective Language Interface</h3>
+        <p class="text-lg text-muted-foreground line-clamp-3 mb-4">LLMs are providing robots with a cost-effective and flexible language interface, accelerating their capabilities and versatility.</p>
+        <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a></section><section class="mb-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><a href="intel-leverages-ai-and-accenture-for-marketing-overhaul-trims-workforce.html" class="block group"><div class="overflow-hidden rounded-lg">
+            <img src="https://lh3.googleusercontent.com/d/1tlETE9Cl1SkgC4eZAHnS-An0sUswoE59=w1200" alt="Intel Leverages AI and Accenture for Marketing Overhaul, Trims Workforce" class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"></div>
+            <h3 class="mt-4 text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight">Intel Leverages AI and Accenture for Marketing Overhaul, Trims Workforce</h3>
+            <p class="text-sm text-muted-foreground mt-2">June 22, 2025</p></a><a href="state-grid-xinjiang-deploys-advanced-ai-for-knowledge-management.html" class="block group"><div class="overflow-hidden rounded-lg">
+            <img src="https://lh3.googleusercontent.com/d/1Qzg-FXg42Hl99PlfoE5iRqSiRo6aZAFQ=w1200" alt="State Grid Xinjiang Deploys Advanced AI for Knowledge Management" class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"></div>
+            <h3 class="mt-4 text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight">State Grid Xinjiang Deploys Advanced AI for Knowledge Management</h3>
+            <p class="text-sm text-muted-foreground mt-2">June 22, 2025</p></a><a href="openais-vision-humanoid-robots-as-part-of-chatgpts-top-subscription.html" class="block group"><div class="overflow-hidden rounded-lg">
+            <img src="https://lh3.googleusercontent.com/d/14G6aZLtKth2yYO0Dftq23Cs-c01pSnPe=w1200" alt="OpenAI’s Vision: Humanoid Robots as Part of ChatGPT’s Top Subscription" class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"></div>
+            <h3 class="mt-4 text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight">OpenAI’s Vision: Humanoid Robots as Part of ChatGPT’s Top Subscription</h3>
+            <p class="text-sm text-muted-foreground mt-2">June 22, 2025</p></a><a href="ai-startup-predicts-and-prevents-shoplifting-before-it-happens.html" class="block group"><div class="overflow-hidden rounded-lg">
+            <img src="https://lh3.googleusercontent.com/d/1UdSD3IlHao6Rocb6HYdqa62uZoGln_5p=w1200" alt="AI Startup Predicts and Prevents Shoplifting Before It Happens" class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"></div>
+            <h3 class="mt-4 text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight">AI Startup Predicts and Prevents Shoplifting Before It Happens</h3>
+            <p class="text-sm text-muted-foreground mt-2">June 22, 2025</p></a></div></section><section><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"><div class="lg:col-span-8"><h2 class="text-3xl font-bold tracking-tight text-foreground mb-6">Latest News</h2><div class="space-y-8"><a href="ai-and-robotics-revolutionizing-weed-management-in-agriculture.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1Zad79vxI8wfMdK0A2e51g4mKCRbkAD_N=w1200" alt="AI and Robotics Revolutionizing Weed Management in Agriculture" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">AI and Robotics Revolutionizing Weed Management in Agriculture</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore how AI, robotics, and IoT are transforming weed management to boost global food security and reduce environmental impact.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="top-10-robotics-projects-for-engineering-students-in-2025.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1VfM81GVNEOkGOU0K7x1EUTAa7E7bCxSN=w1200" alt="Top 10 Robotics Projects for Engineering Students in 2025" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Top 10 Robotics Projects for Engineering Students in 2025</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore the most innovative robotics projects for engineering students in 2025, from AI-powered robotic arms to smart farming robots.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="jayant-chaudhary-unveils-indias-ai-literacy-push-with-free-courses-and-teacher-training.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1m8Rl0qIRTdJJA_gang9c9T-gqh3cc6n5=w1200" alt="Jayant Chaudhary Unveils India's AI Literacy Push with Free Courses and Teacher Training" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Jayant Chaudhary Unveils India's AI Literacy Push with Free Courses and Teacher Training</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">India's Skill Development Minister outlines a comprehensive AI literacy program, including free courses, teacher training, and tinkering labs, to prepare the next generation for the AI-driven future.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="is-it-time-to-say-goodbye-to-siri.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1QFQMMQqhDHwcWjM_aFF2MIDQgjZlUQtD=w1200" alt="Is It Time to Say Goodbye to Siri?" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Is It Time to Say Goodbye to Siri?</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore why Siri might be holding Apple back in the AI race and whether it's time to consider a new direction.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="openai-ditches-io-brand-for-jony-ive-hardware-project.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1BCsCqr6f-cIHxw6yaCuvUNqWLyLJASIf=w1200" alt="OpenAI Ditches 'io' Brand for Jony Ive Hardware Project" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">OpenAI Ditches 'io' Brand for Jony Ive Hardware Project</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">OpenAI has removed all references to the 'io' brand, its planned AI hardware startup with Jony Ive, due to a trademark dispute.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="preparing-the-american-workforce-for-the-ai-revolution.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/147hNC5WKszS3KBT_h1NDlqvm_KoYPzg_=w1200" alt="Preparing the American Workforce for the AI Revolution" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Preparing the American Workforce for the AI Revolution</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore how the rapid development of AI is reshaping the American workforce and the need for a new G.I. Bill to mitigate its impacts.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="why-the-catholic-church-must-address-ai.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1jvNXJlFYL-l-F1q_LU1pbqYy9bSJKSU5=w1200" alt="Why the Catholic Church Must Address AI" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Why the Catholic Church Must Address AI</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore the urgent need for the Catholic Church to provide moral guidance on artificial intelligence and its impact on work, ethics, and human dignity.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a><a href="industrial-iot-the-backbone-of-resilient-supply-chains.html" class="block group"><div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <div class="sm:col-span-1"><img src="https://lh3.googleusercontent.com/d/1yv1AAshkXTuqZ_gjkXsHZdIcdXKpMSCH=w1200" alt="Industrial IoT: The Backbone of Resilient Supply Chains" class="w-full h-full aspect-video object-cover rounded-lg"></div>
+            <div class="sm:col-span-2"><h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">Industrial IoT: The Backbone of Resilient Supply Chains</h3>
+            <p class="text-muted-foreground line-clamp-2 mb-3">Explore how Industrial IoT (IIoT) transforms supply chains with real-time data, predictive maintenance, and smart factories, enhancing efficiency and resilience.</p>
+            <p class="text-sm font-medium text-muted-foreground">June 22, 2025</p></div></div></a></div></div><aside class="lg:col-span-4"><div class="sticky top-24 space-y-8"><div class="p-6 bg-muted rounded-lg border"><h3 class="text-xl font-bold text-foreground mb-4">Categories</h3><ul class="space-y-2"><li><a href="category-machine-learning.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Machine Learning</span><span>→</span></a></li><li><a href="category-hardware.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Hardware</span><span>→</span></a></li><li><a href="category-ethics.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Ethics</span><span>→</span></a></li><li><a href="category-robotics.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Robotics</span><span>→</span></a></li><li><a href="category-business.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Business</span><span>→</span></a></li><li><a href="category-innovation.html" class="flex justify-between items-center text-muted-foreground hover:text-primary font-medium"><span>Innovation</span><span>→</span></a></li></ul></div><div class="p-6 bg-muted rounded-lg border"><h3 class="text-xl font-bold text-foreground mb-4">Recent Posts</h3><ul class="space-y-4"><li><a href="llms-revolutionize-robotics-a-cost-effective-language-interface.html" class="font-semibold text-foreground hover:text-primary leading-tight">LLMs Revolutionize Robotics: A Cost-Effective Language Interface</a></li><li><a href="intel-leverages-ai-and-accenture-for-marketing-overhaul-trims-workforce.html" class="font-semibold text-foreground hover:text-primary leading-tight">Intel Leverages AI and Accenture for Marketing Overhaul, Trims Workforce</a></li><li><a href="state-grid-xinjiang-deploys-advanced-ai-for-knowledge-management.html" class="font-semibold text-foreground hover:text-primary leading-tight">State Grid Xinjiang Deploys Advanced AI for Knowledge Management</a></li><li><a href="openais-vision-humanoid-robots-as-part-of-chatgpts-top-subscription.html" class="font-semibold text-foreground hover:text-primary leading-tight">OpenAI’s Vision: Humanoid Robots as Part of ChatGPT’s Top Subscription</a></li><li><a href="ai-startup-predicts-and-prevents-shoplifting-before-it-happens.html" class="font-semibold text-foreground hover:text-primary leading-tight">AI Startup Predicts and Prevents Shoplifting Before It Happens</a></li></ul></div></div></aside></div></section>
+        <nav class="mt-16 border-t border-border pt-8 flex items-center justify-between">
+            <span class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border bg-muted text-muted-foreground cursor-not-allowed">← Previous</span>
+            <p class='text-sm text-muted-foreground'>Page 1 of 4</p>
+            <a href="page-2.html" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border bg-white text-foreground hover:bg-muted transition-colors">Next →</a>
+        </nav></div></main><footer class="w-full py-10 mt-8 bg-muted border-t text-center text-muted-foreground"><p>© {datetime.now().year} Visive.ai. All rights reserved.</p></footer></body></html>
